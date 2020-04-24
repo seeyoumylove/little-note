@@ -1,0 +1,36 @@
+# 系统变量
+#$PWD:当前目录
+# 版本号
+version: '3'
+
+# 指定创建的虚拟网络数量
+# 作用：通过不同的虚拟网络实现了容器网络之间的隔离,从而在最大程度上保护后端网络的安全
+#networds:
+# mynet:
+#   driver:bridge
+# mynet1:
+
+# 重用的代码模板 模板的定义必须以'x-'开头
+x-logging:
+  # 以&开头的字符串为模板名称  以*加上模板的名称引用模板
+  #&default-logging
+  #driver: json-file
+  #options:
+      #max-size: "200k"
+      #max-file: "10k"
+
+# 定义全局挂载卷
+#volumes:
+ # test_1.thinking.com
+ # test_2.thinking.com
+
+services:
+  little-note:
+    image: little-note:latest
+    container_name: little-note
+    restart: always
+    ports:
+      - 80:80
+    env_file: .env
+    environment:
+      TZ: Asia/Shanghai
