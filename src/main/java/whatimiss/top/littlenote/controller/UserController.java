@@ -13,6 +13,11 @@ public class UserController {
         return "Hello";
     }
 
+    @GetMapping("hello")
+    public String hello() {
+        return "Hello";
+    }
+
     @GetMapping()
     private String HelloWorld() {
         return "Hello World";

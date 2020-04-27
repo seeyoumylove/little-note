@@ -26,11 +26,11 @@ version: '3'
 
 services:
   little-note:
-    image: docker.io/openjdk
+    image: little-note
     container_name: little-note
     restart: always
     ports:
-      - 80:80
+      - 8080:8080
     volumes:
       - /root/little-note/target/littlenote-0.0.1-SNAPSHOT.jar:/data/littlenote-0.0.1-SNAPSHOT.jar
     entrypoint: java -jar /data/littlenote-0.0.1-SNAPSHOT.jar #启动容器后执行的命令
