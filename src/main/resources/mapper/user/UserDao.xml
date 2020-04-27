@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="top.whatimiss.littlenote.modules.user.dao.UserDao">
+
+    <select id="queryByAccount" resultType="top.whatimiss.littlenote.modules.user.entity.UserEntity">
+		select * from userEntity where account = #{account} or mobile = #{account}
+	</select>
+
+</mapper>

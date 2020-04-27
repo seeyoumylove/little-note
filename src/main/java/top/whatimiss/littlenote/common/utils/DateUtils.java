@@ -1,4 +1,4 @@
-package whatimiss.top.littlenote.common.utils;
+package top.whatimiss.littlenote.common.utils;
 
 import java.time.*;
 import java.util.Date;

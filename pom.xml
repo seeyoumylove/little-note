@@ -11,16 +11,17 @@
     <groupId>whatimiss.top</groupId>
     <artifactId>littlenote</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>littlenote</name>
+    <name>little-note</name>
     <description>日记</description>
 
     <properties>
         <java.version>1.8</java.version>
+        <shiro.version>1.4.0</shiro.version>
         <commons.lang.version>2.6</commons.lang.version>
         <commons.io.version>2.5</commons.io.version>
         <mybatisplus.version>3.0.7.1</mybatisplus.version>
         <druid.version>1.1.21</druid.version>
-        <mysql.version>5.1.38</mysql.version>
+        <mysql.version>8.0.11</mysql.version>
         <logback.version>1.2.3</logback.version>
         <log4j.version>1.2.17</log4j.version>
         <hutool.version>5.3.2</hutool.version>
@@ -47,6 +48,20 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>${shiro.version}</version>
         </dependency>
 
         <!-- lombok包-->
@@ -76,11 +91,22 @@
             <version>${druid.version}</version>
         </dependency>
         <!--mybatis插件-->
-<!--        <dependency>-->
-<!--            <groupId>com.baomidou</groupId>-->
-<!--            <artifactId>mybatis-plus-boot-starter</artifactId>-->
-<!--            <version>${mybatisplus.version}</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>${mybatisplus.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.baomidou</groupId>
+                    <artifactId>mybatis-plus-generator</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus</artifactId>
+            <version>${mybatisplus.version}</version>
+        </dependency>
         <!--logback-->
         <dependency>
             <groupId>ch.qos.logback</groupId>
