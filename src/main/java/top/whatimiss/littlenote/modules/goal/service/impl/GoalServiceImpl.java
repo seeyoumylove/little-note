@@ -36,7 +36,7 @@ public class GoalServiceImpl extends ServiceImpl<GoalDao,GoalEntity> implements 
         List<GoalEntity> goalList = goalDao.getGoalList(userId);
         goalList.stream().forEach(goalEntity -> {
             if (goalEntity.getCurrentValue() != null && goalEntity.getGoalValue() != null) {
-                goalEntity.setRate(CountUtils.getRateByDecimal(goalEntity.getCurrentValue(),goalEntity.getGoalValue()));
+                goalEntity.setProcess(CountUtils.getRateByDecimal(goalEntity.getCurrentValue(),goalEntity.getGoalValue()));
             }
         });
         return goalList;

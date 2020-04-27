@@ -45,5 +45,5 @@ public class GoalEntity implements Serializable {
     private Date updateTime;
 
     @TableField(exist = false)
-    private String rate;
+    private String process;
 }

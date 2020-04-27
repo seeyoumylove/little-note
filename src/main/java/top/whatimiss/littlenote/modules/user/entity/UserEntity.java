@@ -12,7 +12,7 @@ import java.io.Serializable;
  * 系统用户
  */
 @Data
-@TableName("sys_user")
+@TableName("user")
 public class UserEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 

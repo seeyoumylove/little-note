@@ -20,7 +20,7 @@ public class CountUtils {
      * @return
      */
     public static String getRateByDecimal(BigDecimal pre, BigDecimal back) {
-        return pre.multiply(new BigDecimal(100)).divide(back,2) + "%";
+        return pre.multiply(new BigDecimal(100)).divide(back, 2).toString();
     }
 
 }
