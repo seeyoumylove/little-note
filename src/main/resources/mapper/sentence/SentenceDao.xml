@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.whatimiss.littlenote.modules.sentence.dao.SentenceDao">
+
+    <select id="getList" resultType="top.whatimiss.littlenote.modules.sentence.entity.SentenceEntity">
+        select * from sentence where
+         user_id = #{userId}
+        <if test="sentenceType != null and sentenceType !=''">
+           and sentence_type = #{sentenceType}
+        </if>
+        order by update_time
+    </select>
+    <select id="sentenceTypeList" resultType="java.util.Map">
+        select * from sentence_type
+    </select>
+</mapper>

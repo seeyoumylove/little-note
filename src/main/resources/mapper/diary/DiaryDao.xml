@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.whatimiss.littlenote.modules.diary.dao.DiaryDao">
+
+    <select id="getList" resultType="top.whatimiss.littlenote.modules.diary.entity.DiaryEntity">
+        select * from diary where user_id = #{userId}
+        <if test="diaryType != null and diaryType !=''">
+            and diary_type = #{diaryType}
+        </if>
+        order by update_time
+    </select>
+    <select id="diaryTypeList" resultType="java.util.Map">
+        select * from diary_type
+    </select>
+</mapper>
