@@ -10,6 +10,6 @@
         order by update_time
     </select>
     <select id="diaryTypeList" resultType="java.util.Map">
-        select * from diary_type
+        select id,diary_type diaryType from diary_type
     </select>
 </mapper>

@@ -11,6 +11,6 @@
         order by update_time
     </select>
     <select id="sentenceTypeList" resultType="java.util.Map">
-        select * from sentence_type
+        select id,sentence_type sentenceType from sentence_type
     </select>
 </mapper>
