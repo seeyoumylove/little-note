@@ -31,7 +31,7 @@ public class SentenceEntity {
     /**
      * 解释
      */
-    private String explain;
+    private String detail;
 
     /**
      * 创建时间
