@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.whatimiss.littlenote.modules.cost.dao.CostDao">
+
+    <select id="getList" resultType="top.whatimiss.littlenote.modules.cost.entity.CostEntity">
+        select
+        cost.id,
+        cost.cost,
+        cost.create_time,
+        cost.user_id,
+        cost.detail,
+        type.cost_type
+         from cost cost
+        left join cost_type type
+        on cost.cost_type = type.id
+        where user_id=#{userId}
+        <if test="costType != null and costType !=''">
+            and cost_type = #{costType}
+        </if>
+        <choose>
+            <when test="createTime != null and createTime != ''">
+                and DATE_FORMAT( cost.create_time, '%Y%m' ) = DATE_FORMAT(#{createTime} ,'%Y%m')
+            </when>
+            <otherwise>
+                and DATE_FORMAT( cost.create_time, '%Y%m' ) = DATE_FORMAT(CURDATE(),'%Y%m')
+            </otherwise>
+        </choose>
+    </select>
+    <select id="costTypeList" resultType="java.util.Map">
+          select id,cost_type costType from cost_type
+    </select>
+</mapper>
