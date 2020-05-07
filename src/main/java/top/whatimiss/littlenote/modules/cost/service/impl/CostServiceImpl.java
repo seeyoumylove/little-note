@@ -45,4 +45,48 @@ public class CostServiceImpl extends ServiceImpl<CostDao, CostEntity> implements
     public List<Map<String, Object>> costTypeList() {
         return this.baseMapper.costTypeList();
     }
+
+    /**
+     * 根据月份获取每日花费
+     * @param month
+     * @param userId
+     * @return
+     */
+    @Override
+    public List<Map<String, Object>> getDailyCostByMonth(String month, String userId) {
+        return this.baseMapper.getDailyCostByMonth(month,userId);
+    }
+
+    /**
+     * 根据月份获取每种消费类型的统计图
+     * @param month
+     * @param userId
+     * @return
+     */
+    @Override
+    public List<Map<String, Object>> getMonthlyCostPieChart(String month, String userId) {
+        return this.baseMapper.getMonthlyCostPieChart(month,userId);
+    }
+
+    /**
+     * 根据年份获取每月花费
+     * @param year
+     * @param userId
+     * @return
+     */
+    @Override
+    public List<Map<String, Object>> getMonthlyCostByYear(String year, String userId) {
+        return this.baseMapper.getMonthlyCostByYear(year,userId);
+    }
+
+    /**
+     * 获取每年消费类型的饼状图
+     * @param year
+     * @param userId
+     * @return
+     */
+    @Override
+    public List<Map<String, Object>> getYearlyCostPieChart(String year, String userId) {
+        return this.baseMapper.getYearlyCostPieChart(year,userId);
+    }
 }

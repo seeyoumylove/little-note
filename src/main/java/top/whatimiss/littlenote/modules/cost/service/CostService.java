@@ -17,4 +17,12 @@ public interface CostService extends IService<CostEntity> {
     PageUtils getList(Map params);
 
     List<Map<String, Object>> costTypeList();
+
+    List<Map<String, Object>> getDailyCostByMonth(String month, String userId);
+
+    List<Map<String, Object>> getMonthlyCostPieChart(String month, String userId);
+
+    List<Map<String, Object>> getMonthlyCostByYear(String year, String userId);
+
+    List<Map<String, Object>> getYearlyCostPieChart(String year, String userId);
 }

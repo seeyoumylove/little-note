@@ -25,4 +25,12 @@ public interface CostDao extends BaseMapper<CostEntity> {
                              @Param("createTime") String createTime);
 
     List<Map<String, Object>> costTypeList();
+
+    List<Map<String, Object>> getDailyCostByMonth(@Param("month") String month, @Param("userId") String userId);
+
+    List<Map<String, Object>> getMonthlyCostPieChart(@Param("month") String month, @Param("userId") String userId);
+
+    List<Map<String, Object>> getMonthlyCostByYear(@Param("year") String year, @Param("userId") String userId);
+
+    List<Map<String, Object>> getYearlyCostPieChart(@Param("year") String year, @Param("userId") String userId);
 }

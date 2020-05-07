@@ -27,6 +27,42 @@
         </choose>
     </select>
     <select id="costTypeList" resultType="java.util.Map">
-          select id,cost_type costType from cost_type
+          select id,cost_type costType,icon from cost_type
+    </select>
+    <select id="getDailyCostByMonth" resultType="java.util.Map">
+        SELECT  DATE_FORMAT( create_time, '%d' ) date, sum( cost ) totalCost
+        FROM cost  WHERE  user_id = #{userId}  AND DATE_FORMAT( cost.create_time, '%Y%m' ) = DATE_FORMAT( #{month}, '%Y%m' )
+        GROUP BY DATE_FORMAT( create_time,'%d')
+    </select>
+    <select id="getMonthlyCostPieChart" resultType="java.util.Map">
+        SELECT
+	type.cost_type costType,
+	sum( cost.cost ) totalCost
+        FROM
+	cost cost
+	LEFT JOIN cost_type type ON cost.cost_type = type.id
+        WHERE
+	user_id = #{userId}
+	AND DATE_FORMAT( cost.create_time, '%Y%m' ) = DATE_FORMAT( #{month}, '%Y%m' )
+        GROUP BY
+	cost.cost_type
+    </select>
+    <select id="getMonthlyCostByYear" resultType="java.util.Map">
+         SELECT  DATE_FORMAT( create_time, '%m' ) date, sum( cost ) totalCost
+        FROM cost  WHERE  user_id = #{userId}  AND DATE_FORMAT( cost.create_time, '%Y' ) = DATE_FORMAT( #{year}, '%Y' )
+        GROUP BY DATE_FORMAT( create_time,'%m')
+    </select>
+    <select id="getYearlyCostPieChart" resultType="java.util.Map">
+             SELECT
+	type.cost_type costType,
+	sum( cost.cost ) totalCost
+        FROM
+	cost cost
+	LEFT JOIN cost_type type ON cost.cost_type = type.id
+        WHERE
+	user_id = #{userId}
+	AND DATE_FORMAT( cost.create_time, '%Y' ) = DATE_FORMAT( #{year}, '%Y' )
+        GROUP BY
+	cost.cost_type
     </select>
 </mapper>
