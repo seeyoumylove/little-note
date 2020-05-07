@@ -76,7 +76,7 @@ public class CostController {
      * 获取每月花费的类型的饼状图
      * @return
      */
-    @GetMapping("getMonthlyCostByPieChart")
+    @GetMapping("getMonthlyCostPieChart")
     public Result getMonthlyCostPieChart(@RequestParam String month,@RequestParam String userId) {
         List<Map<String, Object>> mapList = costService.getMonthlyCostPieChart(month, userId);
         return Result.success(mapList);
