@@ -4,5 +4,6 @@
 
     <select id="getGoalList" resultType="top.whatimiss.littlenote.modules.goal.entity.GoalEntity">
         select * from goal where user_id = #{userId}
+        and DATE_FORMAT(update_time, '%Y' ) = DATE_FORMAT(CURDATE(),'%Y')
     </select>
 </mapper>

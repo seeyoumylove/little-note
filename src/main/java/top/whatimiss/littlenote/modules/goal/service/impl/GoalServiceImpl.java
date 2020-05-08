@@ -9,6 +9,7 @@ import top.whatimiss.littlenote.modules.goal.dao.GoalDao;
 import top.whatimiss.littlenote.modules.goal.entity.GoalEntity;
 import top.whatimiss.littlenote.modules.goal.service.GoalService;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -36,7 +37,13 @@ public class GoalServiceImpl extends ServiceImpl<GoalDao,GoalEntity> implements 
         List<GoalEntity> goalList = goalDao.getGoalList(userId);
         goalList.stream().forEach(goalEntity -> {
             if (goalEntity.getCurrentValue() != null && goalEntity.getGoalValue() != null) {
-                goalEntity.setProcess(CountUtils.getRateByDecimal(goalEntity.getCurrentValue(),goalEntity.getGoalValue()));
+                if(goalEntity.getGoalValue().compareTo(goalEntity.getCurrentValue()) >= 0) {
+                    goalEntity.setProcess(CountUtils.getRateByDecimal(goalEntity.getCurrentValue(),goalEntity.getGoalValue()));
+                } else {
+                    goalEntity.setProcess(new BigDecimal("100").subtract(new BigDecimal(CountUtils.getRateByDecimal(goalEntity.getCurrentValue().subtract(goalEntity.getGoalValue()),
+                            goalEntity.getGoalValue()))).toString());
+                }
+
             }
         });
         return goalList;

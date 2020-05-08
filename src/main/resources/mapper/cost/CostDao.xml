@@ -26,6 +26,7 @@
                 and DATE_FORMAT( cost.create_time, '%Y%m' ) = DATE_FORMAT(CURDATE(),'%Y%m')
             </otherwise>
         </choose>
+        order by cost.create_time desc
     </select>
     <select id="costTypeList" resultType="java.util.Map">
           select id,cost_type costType,icon from cost_type
