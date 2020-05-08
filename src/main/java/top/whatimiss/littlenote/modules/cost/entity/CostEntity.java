@@ -1,5 +1,6 @@
 package top.whatimiss.littlenote.modules.cost.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -49,6 +50,12 @@ public class CostEntity {
      * 所属用户
      */
     private Long userId;
+
+    /**
+     *  图标
+     */
+    @TableField(exist = false)
+    private String icon;
 
 
 

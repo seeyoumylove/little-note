@@ -9,7 +9,8 @@
         cost.create_time,
         cost.user_id,
         cost.detail,
-        type.cost_type
+        type.cost_type,
+        type.icon
          from cost cost
         left join cost_type type
         on cost.cost_type = type.id
@@ -32,7 +33,7 @@
     <select id="getDailyCostByMonth" resultType="java.util.Map">
         SELECT  DATE_FORMAT( create_time, '%d' ) date, sum( cost ) value
         FROM cost  WHERE  user_id = #{userId}  AND DATE_FORMAT( cost.create_time, '%Y%m' ) = DATE_FORMAT( #{month}, '%Y%m' )
-        GROUP BY DATE_FORMAT( create_time,'%d')
+        GROUP BY DATE_FORMAT( create_time,'%d') order by date
     </select>
     <select id="getMonthlyCostPieChart" resultType="java.util.Map">
         SELECT
@@ -50,7 +51,7 @@
     <select id="getMonthlyCostByYear" resultType="java.util.Map">
          SELECT  DATE_FORMAT( create_time, '%m' ) date, sum( cost ) value
         FROM cost  WHERE  user_id = #{userId}  AND DATE_FORMAT( cost.create_time, '%Y' ) = DATE_FORMAT( #{year}, '%Y' )
-        GROUP BY DATE_FORMAT( create_time,'%m')
+        GROUP BY DATE_FORMAT( create_time,'%m') order by date
     </select>
     <select id="getYearlyCostPieChart" resultType="java.util.Map">
              SELECT
