@@ -2,8 +2,9 @@ package top.whatimiss.littlenote.common.exception;
 
 
 /**
- * Copyright (c) 2020 Cloud-Ark Inc.
- * Author(s): Ma Wei (mawei@cloud-ark.com)
+ * @author wcj
+ * @create 2020/11/10 下午3:58
+ * @description
  */
 public interface ErrorType {
     /**
